@@ -1,394 +1,166 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pembuatan Konten Marketing 3D Web 360 Panorama</title>
+<title id="pageTitle">Interactive Virtual Tour — Tur Virtual 360° untuk Properti &amp; Bisnis Anda</title>
+<meta id="pageDesc" name="description" content="Studio produksi tur virtual 360° untuk properti, hotel, dan bisnis. Lihat portofolio kami dan wujudkan ruang Anda dalam tur interaktif.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <div class="page">
 
-  <!-- APP HEADER -->
-  <header class="app-header" id="appHeader">
-    <div class="app-logo">
-      <!-- Ganti dengan <img src="assets/icons/logo.png" alt="Logo"> jika sudah punya logo -->
-      360
+  <!-- HEADER -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" width="34" height="34">
+            <circle cx="20" cy="20" r="17" fill="none" stroke="currentColor" stroke-width="1.4" stroke-dasharray="4 5"/>
+            <circle cx="20" cy="20" r="6.5" fill="currentColor"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name">Interactive</span>
+          <span class="brand-sub">Virtual Tour</span>
+        </span>
+      </a>
+
+      <nav class="main-nav" id="mainNav">
+        <a href="#portfolio" data-i18n="nav_portfolio">Portofolio</a>
+        <a href="#info" data-i18n="nav_info">Info</a>
+        <a href="#contact" data-i18n="nav_contact">Kontak</a>
+        <div class="lang-switch lang-switch--mobile" role="group" aria-label="Language">
+          <button type="button" data-lang-btn="id">ID</button>
+          <button type="button" data-lang-btn="en">EN</button>
+          <button type="button" data-lang-btn="ja">JA</button>
+          <button type="button" data-lang-btn="zh">CH</button>
+        </div>
+      </nav>
+
+      <div class="header-actions">
+        <div class="lang-switch lang-switch--desktop" role="group" aria-label="Language">
+          <button type="button" data-lang-btn="id">ID</button>
+          <button type="button" data-lang-btn="en">EN</button>
+          <button type="button" data-lang-btn="ja">JA</button>
+          <button type="button" data-lang-btn="zh">CH</button>
+        </div>
+        <a class="btn btn-cta" href="#contact" data-i18n="nav_cta">Hubungi Kami</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
-    <div class="app-title">
-      <span class="name">Virtual Tour</span>
-      <span class="tag">360 Web for Marketing</span>
-    </div>
-    <div class="status-dot">Proposal</div>
   </header>
 
   <!-- HERO -->
-  <section class="hero reveal">
-    <p class="eyebrow">PROPOSAL PENAWARAN JASA</p>
-    <h1>Pembuatan Konten Marketing 3D Web 360 Panorama</h1>
-    <p class="desc">Tampilkan lokasi, produk, dan pengalaman terbaik Anda dalam tampilan interaktif 360° yang dapat diakses melalui web.</p>
-    <div class="hero-tags">
-      <span>Lebih Interaktif</span>
-      <span>Lebih Profesional</span>
-      <span>Lebih Meyakinkan</span>
+  <section class="hero" id="top">
+    <div class="hero-embed" id="heroEmbed">
+      <iframe id="heroFrame" src="" title="Featured 360 tour"
+        loading="lazy" allowfullscreen
+        allow="fullscreen; autoplay; gyroscope; accelerometer; xr-spatial-tracking"></iframe>
+    </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="hero-content">
+      <p class="hero-kicker" id="heroKicker">Bellevue Residences</p>
+      <h1 data-i18n="hero_title">Ruang Anda, dijelajahi sepenuhnya</h1>
+      <p class="hero-desc" data-i18n="hero_desc">Kami mengubah properti, ruang usaha, dan destinasi Anda menjadi tur 360° interaktif yang membuat calon klien merasa sudah berada di sana.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#portfolio" data-i18n="hero_cta">Lihat Portofolio</a>
+        <a class="btn btn-ghost" id="heroOpenFull" href="#" target="_blank" rel="noopener" data-i18n="btn_open_tour">Buka Tur Penuh</a>
+      </div>
+    </div>
+    <a class="scroll-cue" href="#portfolio" aria-hidden="true"><span></span></a>
+  </section>
+
+  <!-- PORTFOLIO (PRIMARY) -->
+  <section class="portfolio" id="portfolio">
+    <div class="container">
+      <div class="section-heading">
+        <h2 data-i18n="portfolio_title">Tur yang pernah kami buat</h2>
+        <p data-i18n="portfolio_desc">Setiap proyek dapat dijelajahi langsung di bawah ini. Klik salah satu untuk menampilkannya di atas, atau buka layar penuh.</p>
+      </div>
+      <div class="portfolio-grid" id="portfolioGrid"><!-- rendered by main.js --></div>
     </div>
   </section>
 
-  <!-- 1. WHY -->
-  <section class="section reveal">
-    <div class="section-head">
-      <div class="num-badge">1</div>
-      <h2>Mengapa 360 Panorama Berbasis Web Lebih Baik daripada Video dan Foto?</h2>
-    </div>
-    <p class="section-sub">Konten video dan foto tetap penting, namun 3D Web 360 Panorama memberikan pengalaman yang jauh lebih imersif, interaktif, dan efektif dalam menarik minat calon pelanggan.</p>
-
-    <div class="compare-wrap">
-      <div class="compare-row">
-        <div class="aspect-label"><span class="ico">👤</span>Pengalaman Pelanggan</div>
-        <div class="compare-cell tour"><span class="tag">360 Tour</span><span>Pengalaman imersif, seolah berada langsung di lokasi.</span></div>
-        <div class="compare-cell video"><span class="tag">Video</span><span>Menampilkan urutan gambar, tidak bebas melihat ke segala arah.</span></div>
-        <div class="compare-cell foto"><span class="tag">Foto</span><span>Hanya menampilkan satu sudut pandang per foto.</span></div>
-      </div>
-
-      <div class="compare-row">
-        <div class="aspect-label"><span class="ico">🖱️</span>Interaktivitas</div>
-        <div class="compare-cell tour"><span class="tag">360 Tour</span><span>Bisa melihat ke segala arah (360°) dan berpindah area dengan mudah.</span></div>
-        <div class="compare-cell video"><span class="tag">Video</span><span>Interaktif terbatas, hanya mengikuti alur video.</span></div>
-        <div class="compare-cell foto"><span class="tag">Foto</span><span>Tidak interaktif, hanya menampilkan satu gambar.</span></div>
-      </div>
-
-      <div class="compare-row">
-        <div class="aspect-label"><span class="ico">📦</span>Informasi Ruang</div>
-        <div class="compare-cell tour"><span class="tag">360 Tour</span><span>Menampilkan seluruh ruang secara lengkap dan detail.</span></div>
-        <div class="compare-cell video"><span class="tag">Video</span><span>Tidak bisa menampilkan seluruh ruang secara bebas.</span></div>
-        <div class="compare-cell foto"><span class="tag">Foto</span><span>Tidak bisa menampilkan keseluruhan ruang.</span></div>
-      </div>
-
-      <div class="compare-row">
-        <div class="aspect-label"><span class="ico">👁️</span>Daya Tarik Visual</div>
-        <div class="compare-cell tour"><span class="tag">360 Tour</span><span>Lebih menarik, modern, dan meningkatkan kepercayaan.</span></div>
-        <div class="compare-cell video"><span class="tag">Video</span><span>Menarik, namun terbatas pada alur cerita.</span></div>
-        <div class="compare-cell foto"><span class="tag">Foto</span><span>Kurang menarik dibanding konten interaktif.</span></div>
-      </div>
-
-      <div class="compare-row">
-        <div class="aspect-label"><span class="ico">🕒</span>Waktu &amp; Biaya Produksi</div>
-        <div class="compare-cell tour"><span class="tag">360 Tour</span><span>Efisien — satu kali produksi dapat digunakan jangka panjang.</span></div>
-        <div class="compare-cell video"><span class="tag">Video</span><span>Perlu editing dan produksi berulang untuk tiap versi.</span></div>
-        <div class="compare-cell foto"><span class="tag">Foto</span><span>Produksi relatif murah, namun hasilnya terbatas.</span></div>
-      </div>
-
-      <div class="compare-row">
-        <div class="aspect-label"><span class="ico">🌐</span>Aksesibilitas</div>
-        <div class="compare-cell tour"><span class="tag">360 Tour</span><span>Bisa diakses kapan saja, di mana saja melalui web (HP, tablet, PC).</span></div>
-        <div class="compare-cell video"><span class="tag">Video</span><span>Perlu platform seperti YouTube, Instagram, atau media sosial.</span></div>
-        <div class="compare-cell foto"><span class="tag">Foto</span><span>Bisa diakses di web, namun kurang memberikan pengalaman.</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 2. STATS -->
-  <section class="section reveal">
-    <div class="section-head">
-      <div class="num-badge">2</div>
-      <h2>Penggunaan Virtual Tour 360 berbasis Web di Negara Maju Sudah Sangat Umum</h2>
-    </div>
-    <p class="section-sub">Di negara maju, Dubai, Amerika Serikat, dan lainnya, 3D Web 360 Panorama sudah menjadi standar dalam pemasaran properti, pariwisata, hotel, ritel, hingga industri manufaktur.</p>
-
-    <div class="stat-grid">
-      <div class="stat-card">
-        <div class="stat-flag">🇪🇺</div>
-        <div class="stat-country">Eropa</div>
-        <div class="stat-pct">78%</div>
-        <div class="stat-desc">perusahaan properti menggunakan virtual tour 360° untuk pemasaran.</div>
-        <div class="stat-source">(data: Matterport, 2023)</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-flag">🇦🇪</div>
-        <div class="stat-country">Dubai</div>
-        <div class="stat-pct">72%</div>
-        <div class="stat-desc">hotel &amp; destinasi wisata menggunakan 360° virtual tour di website mereka.</div>
-        <div class="stat-source">(data: Dubai Tour, 2023)</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-flag">🇺🇸</div>
-        <div class="stat-country">Amerika Serikat</div>
-        <div class="stat-pct">65%</div>
-        <div class="stat-desc">bisnis ritel &amp; real estate menggunakan 3D 360° di situs web mereka.</div>
-        <div class="stat-source">(data: Matterport, 2023)</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-flag">🌍</div>
-        <div class="stat-country">Negara Maju Lainnya</div>
-        <div class="stat-pct">60%</div>
-        <div class="stat-desc">perusahaan di Jepang, Singapura, Australia, dkk telah mengadopsi teknologi ini.</div>
-        <div class="stat-source">(data: Statista, 2023)</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3. PORTFOLIO -->
-  <section class="section reveal">
-    <div class="section-head">
-      <div class="num-badge">3</div>
-      <h2>Portofolio Kami</h2>
-    </div>
-    <p class="section-sub">Berikut adalah contoh hasil 3D Web 360 Panorama yang pernah kami kerjakan. Ketuk foto atau pindai QR untuk membuka tur 360°-nya langsung.</p>
-
-    <!--
-      Ganti style="background:#7a5230" dengan
-      style="background-image:url('assets/images/coboy-bar.jpg')"
-      begitu foto asli sudah tersedia di folder assets/images/
-    -->
-    <div class="portfolio-list">
-      <div class="portfolio-card">
-        <a class="portfolio-img" style="background-image:url('assets/images/coboy.png')" href="https://coboybar.vtour.workers.dev" target="_blank" rel="noopener">
-          <div class="badge-360">360°</div>
-          <div class="visit-hint">Ketuk untuk buka →</div>
-        </a>
-        <div class="portfolio-info">
-          <img class="qr-box" src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&margin=6&data=https://coboybar.vtour.workers.dev" alt="QR Coboy Bar">
-          <div>
-            <div class="portfolio-name">Coboy Bar</div>
-            <div class="portfolio-loc">Mexico</div>
-            <a class="portfolio-link" href="https://coboybar.vtour.workers.dev" target="_blank" rel="noopener">coboybar.vtour.workers.dev</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="portfolio-card">
-        <a class="portfolio-img" style="background-image:url('assets/images/luma.png')" href="https://luma.vtur.workers.dev" target="_blank" rel="noopener">
-          <div class="badge-360">360°</div>
-          <div class="visit-hint">Ketuk untuk buka →</div>
-        </a>
-        <div class="portfolio-info">
-          <img class="qr-box" src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&margin=6&data=https://luma.vtur.workers.dev" alt="QR Luma Hotel">
-          <div>
-            <div class="portfolio-name">Luma Hotel</div>
-            <div class="portfolio-loc">San Francisco</div>
-            <a class="portfolio-link" href="https://luma.vtur.workers.dev" target="_blank" rel="noopener">luma.vtur.workers.dev</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="portfolio-card">
-        <a class="portfolio-img" style="background-image:url('assets/images/laboug.png')" href="https://laboug.vtur.workers.dev" target="_blank" rel="noopener">
-          <div class="badge-360">360°</div>
-          <div class="visit-hint">Ketuk untuk buka →</div>
-        </a>
-        <div class="portfolio-info">
-          <img class="qr-box" src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&margin=6&data=https://laboug.vtur.workers.dev" alt="QR La Bougainvillea">
-          <div>
-            <div class="portfolio-name">La Bougainvillea</div>
-            <div class="portfolio-loc">Bahamas</div>
-            <a class="portfolio-link" href="https://laboug.vtur.workers.dev" target="_blank" rel="noopener">laboug.vtur.workers.dev</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="cta-strip">
-      <div class="icon">🎯</div>
-      <p>Dengan 3D Web 360 Panorama, calon pelanggan tidak hanya melihat, tetapi benar-benar merasakan suasana lokasi Anda.
-        <span class="highlight">Interaksi lebih dalam, keputusan lebih cepat.</span>
-      </p>
-    </div>
-  </section>
-
-  <!-- 4. SKETCH COMPARISON -->
-  <section class="section reveal">
-    <div class="section-head">
-      <div class="num-badge">4</div>
-      <h2>Sketsa Perbandingan Pengalaman</h2>
-    </div>
-    <p class="section-sub">Berikut adalah ilustrasi sederhana perbedaan cara melihat lokasi menggunakan foto, video, dan 3D Web 360 Panorama.</p>
-
-    <div class="sketch-list">
-      <div class="sketch-card foto">
-        <h3>Foto</h3>
-        <div class="sketch-frame">
-           <img
-        src="assets/images/foto.jpg"
-        alt="Foto"
-        style="
-          width: 240px;
-          height: 150px;
-          object-fit: cover;
-          display: block;
-          border-radius: 6px;
-        ">
-        </div>
-        <div class="sketch-desc">Hanya satu sudut pandang. Tidak bisa bergerak.</div>
-        <div class="sketch-note">Satu gambar, satu informasi.</div>
-      </div>
-
-      <div class="sketch-card video">
-        <h3>Video</h3>
-        <div class="sketch-frame">
-           <img
-        src="assets/images/video.jpg"
-        alt="Foto"
-        style="
-          width: 240px;
-          height: 150px;
-          object-fit: cover;
-          display: block;
-          border-radius: 6px;
-        ">
-        </div>
-        <div class="sketch-desc">Ada alur cerita, tapi tetap terbatas pada jalur yang ditentukan.</div>
-        <div class="sketch-note">Melihat berurutan, tidak bisa bebas.</div>
-      </div>
-
-      <div class="sketch-card tour">
-        <h3>3D Web 360 Panorama</h3>
-        <div class="sketch-frame">
-           <img
-        src="assets/images/360foto.jpg"
-        alt="Foto"
-        style="
-          width: 240px;
-          height: 150px;
-          object-fit: cover;
-          display: block;
-          border-radius: 6px;
-        ">
-        </div>
-        <div class="sketch-desc">Bisa melihat ke segala arah (360°) dan berpindah area secara interaktif.</div>
-        <div class="sketch-note">Jelajahi ruang secara bebas, seperti berada langsung di lokasi.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5. PROCESS -->
-  <section class="section reveal">
-    <div class="section-head">
-      <div class="num-badge">5</div>
-      <h2>Proses Kerja Kami</h2>
-    </div>
-    <p class="section-sub">Kami memastikan setiap tahap berjalan dengan jelas, profesional, dan terstruktur.</p>
-
-    <div class="steps">
-      <div class="step">
-        <div class="step-marker"><div class="step-num">1</div><div class="step-line"></div></div>
-        <div class="step-body">
-          <div class="step-title">Deal / Kesepakatan</div>
-          <ul class="step-items">
-            <li>Diskusi kebutuhan dan konsep</li>
-            <li>Penawaran harga</li>
-            <li>Konfirmasi jadwal</li>
+  <!-- SECONDARY INFO -->
+  <section class="info" id="info">
+    <div class="container info-grid">
+      <div class="info-main">
+        <details class="info-card" open>
+          <summary>
+            <h3 data-i18n="why_title">Kenapa 3D 360 lebih efektif</h3>
+            <span class="info-toggle" aria-hidden="true"></span>
+          </summary>
+          <ul class="info-points">
+            <li data-i18n="why_p1">Calon pelanggan bisa melihat ke segala arah, bukan hanya satu sudut foto atau alur video yang sudah ditentukan.</li>
+            <li data-i18n="why_p2">Satu kali produksi bisa dipakai bertahun-tahun, diakses kapan saja dari HP, tablet, atau PC.</li>
+            <li data-i18n="why_p3">Meningkatkan kepercayaan dan mempercepat keputusan, karena klien merasa sudah pernah melihat langsung ruangnya.</li>
           </ul>
-          <span class="step-time">1 - 2 hari</span>
-        </div>
+        </details>
+
+        <details class="info-card">
+          <summary>
+            <h3 data-i18n="process_title">Proses kerja kami</h3>
+            <span class="info-toggle" aria-hidden="true"></span>
+          </summary>
+          <ol class="info-steps">
+            <li><b data-i18n="step1_t">Diskusi &amp; kesepakatan</b><span data-i18n="step1_d">Membahas kebutuhan, konsep, dan jadwal pengambilan.</span></li>
+            <li><b data-i18n="step2_t">Pengambilan foto lokasi</b><span data-i18n="step2_d">Tim kami memotret ruang Anda dengan peralatan 360° profesional.</span></li>
+            <li><b data-i18n="step3_t">Review hasil</b><span data-i18n="step3_d">Meninjau hasil foto dan konsep tampilan bersama Anda.</span></li>
+            <li><b data-i18n="step4_t">Produksi web tur</b><span data-i18n="step4_d">Proses stitching, editing, dan pembuatan tampilan interaktif.</span></li>
+            <li><b data-i18n="step5_t">Serah terima</b><span data-i18n="step5_d">Anda menerima link, barcode, dan panduan penggunaan.</span></li>
+          </ol>
+        </details>
+
+        <details class="info-card">
+          <summary>
+            <h3 data-i18n="terms_title">Ketentuan layanan</h3>
+            <span class="info-toggle" aria-hidden="true"></span>
+          </summary>
+          <ul class="info-points">
+            <li data-i18n="term1">Penyimpanan data dapat menggunakan server kami (tanpa batas waktu) atau server Anda sendiri.</li>
+            <li data-i18n="term2">Revisi setelah hasil diserahkan berlaku maksimal satu sesi.</li>
+            <li data-i18n="term3">Kendala pada server kami diperbaiki tanpa biaya tambahan.</li>
+            <li data-i18n="term4">Penambahan konten baru dihitung sebagai proyek terpisah, bukan revisi.</li>
+          </ul>
+        </details>
       </div>
 
-      <div class="step">
-        <div class="step-marker"><div class="step-num">2</div><div class="step-line"></div></div>
-        <div class="step-body">
-          <div class="step-title">Pengambilan Foto Lokasi</div>
-          <ul class="step-items">
-            <li>Tim kami datang ke lokasi</li>
-            <li>Pengambilan foto 360° dengan peralatan profesional</li>
-          </ul>
-          <span class="step-time">1 - 2 hari</span>
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="step-marker"><div class="step-num">3</div><div class="step-line"></div></div>
-        <div class="step-body">
-          <div class="step-title">Meeting</div>
-          <ul class="step-items">
-            <li>Review hasil foto</li>
-            <li>Pembahasan konsep tampilan web</li>
-            <li>Penyesuaian kebutuhan tambahan</li>
-          </ul>
-          <span class="step-time">1 - 3 hari</span>
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="step-marker"><div class="step-num">4</div><div class="step-line"></div></div>
-        <div class="step-body">
-          <div class="step-title">Pengerjaan</div>
-          <ul class="step-items">
-            <li>Proses editing &amp; stitching</li>
-            <li>Pembuatan tampilan web</li>
-            <li>Integrasi fitur (navigasi, logo, info, dll.)</li>
-          </ul>
-          <span class="step-time">3 - 7 hari</span>
-        </div>
-      </div>
-
-      <div class="step">
-        <div class="step-marker"><div class="step-num">5</div></div>
-        <div class="step-body">
-          <div class="step-title">Penyerahan Hasil</div>
-          <ul class="step-items">
-            <li>Link web 360°</li>
-            <li>Barcode</li>
-            <li>Panduan penggunaan</li>
-          </ul>
-          <span class="step-time">1 hari</span>
-        </div>
-      </div>
+      <aside class="info-stats">
+        <p class="stats-label" data-i18n="stats_label">Adopsi virtual tour 360° di dunia</p>
+        <div class="stat-row"><span class="stat-num">78%</span><span data-i18n="stat1">properti di Eropa memakainya untuk pemasaran</span></div>
+        <div class="stat-row"><span class="stat-num">72%</span><span data-i18n="stat2">hotel &amp; destinasi wisata di Dubai</span></div>
+        <div class="stat-row"><span class="stat-num">65%</span><span data-i18n="stat3">bisnis ritel dan real estat di Amerika Serikat</span></div>
+        <p class="stats-source">Matterport, Statista 2023</p>
+      </aside>
     </div>
   </section>
 
-  <!-- FINAL RESULT -->
-  <section class="section reveal">
-    <div class="result-box">
-      <h2>Hasil Akhir</h2>
-     <div class="device-mock">
-    <img src="assets/images/hasil.png" alt="Preview 360">
-</div>
-      <div class="link-row">
-        <img class="qr-mini" src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&margin=4&data=https://your-link.com" alt="QR contoh">
-        <span>https://your-link.com</span>
-      </div>
-      <p style="font-weight:700;font-size:13.5px;color:var(--navy);margin:0 0 10px;">Output yang Anda terima:</p>
-      <ul class="output-list">
-        <li>Link 3D Web 360 Panorama</li>
-        <li>Barcode (QR Code) untuk akses cepat</li>
-        <li>Panduan penggunaan (jika diperlukan)</li>
-      </ul>
+  <!-- FINAL CTA -->
+  <section class="cta-final" id="contact">
+    <div class="container">
+      <h2 data-i18n="cta_title">Ingin ruang Anda tampil seperti ini?</h2>
+      <p data-i18n="cta_desc">Ceritakan properti, produk, atau ruang usaha Anda, dan kami bantu wujudkan dalam tur 360° yang meyakinkan.</p>
+      <!-- GANTI href="#" dengan link kontak Anda (email, WhatsApp, atau form) -->
+      <a class="btn btn-primary btn-lg" href="#" data-i18n="cta_button">Mulai diskusi</a>
     </div>
   </section>
 
-  <!-- 6. TERMS -->
-  <section class="section reveal">
-    <div class="section-head">
-      <div class="num-badge">6</div>
-      <h2>Ketentuan &amp; Informasi Penting</h2>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span data-i18n="footer_text">Studio produksi 3D web 360° panorama.</span>
+      <span class="footer-year" id="footerYear"></span>
     </div>
-
-    <div class="terms-list">
-      <div class="term-card c1">
-        <div class="term-head"><span class="ico">☁️</span><h3>Penyimpanan Data (Server)</h3></div>
-        <p>Jika Anda tidak ingin repot, kami akan menggunakan server kami untuk menyimpan data web. Tidak ada batas masa berlaku (lifetime), sehingga Anda tidak perlu memikirkan perpanjangan atau perawatan server. Jika Anda memiliki server sendiri dan ingin menyimpan data di server milik Anda, kami juga bisa, sesuai dengan kesepakatan.</p>
-      </div>
-      <div class="term-card c2">
-        <div class="term-head"><span class="ico">📝</span><h3>Revisi</h3></div>
-        <p>Setelah klien menerima hasil pekerjaan, revisi hanya dilakukan maksimal 1x sesi. Manfaatkan 1x sesi tersebut untuk merevisi semua hal yang ingin diperbaiki. Setelah jatah revisi terpakai, revisi berikutnya akan dikenakan biaya.</p>
-      </div>
-      <div class="term-card c3">
-        <div class="term-head"><span class="ico">🖥️</span><h3>Masalah Server / Web Tidak Bisa Dibuka</h3></div>
-        <p>Jika terjadi masalah server atau web tidak bisa dibuka, kami akan melakukan perbaikan tanpa biaya. Namun, jika klien menggunakan server pribadi, maka perbaikan dapat dilakukan dengan biaya tambahan.</p>
-      </div>
-      <div class="term-card c4">
-        <div class="term-head"><span class="ico">➕</span><h3>Penambahan Konten</h3></div>
-        <p>Jika ada penambahan konten dalam project yang sama, hal tersebut bukan dihitung sebagai revisi, melainkan project baru. Mohon diperhatikan agar perencanaan dan anggaran dapat disesuaikan sejak awal.</p>
-      </div>
-    </div>
-  </section>
-
-  <div class="footer reveal">
-    <p>⭐ Kami siap membantu Anda menghadirkan pengalaman digital terbaik untuk bisnis Anda. Hubungi kami untuk diskusi lebih lanjut.</p>
-    <p class="signoff">Let's Build Your Virtual Space</p>
-  </div>
+  </footer>
 
 </div>
 
+<script src="js/i18n.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
