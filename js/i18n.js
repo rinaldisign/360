@@ -4,7 +4,7 @@
 
 var I18N = {
   id: {
-    meta_title: "Interactive Virtual Tour — Tur Virtual 360° untuk Properti & Bisnis Anda",
+    meta_title: "Interactive Virtual Tour | 360 portfolio",
     meta_desc: "Studio produksi tur virtual 360° untuk properti, hotel, dan bisnis. Lihat portofolio kami dan wujudkan ruang Anda dalam tur interaktif.",
 
     nav_portfolio: "Portofolio",
@@ -61,7 +61,7 @@ var I18N = {
   },
 
   en: {
-    meta_title: "Interactive Virtual Tour — 360° Virtual Tours for Your Property & Business",
+    meta_title: "Interactive Virtual Tour | 360 portfolio",
     meta_desc: "A production studio for 360° virtual tours — properties, hotels, and venues. Explore our portfolio and bring your space to life.",
 
     nav_portfolio: "Portfolio",
@@ -118,7 +118,7 @@ var I18N = {
   },
 
   ja: {
-    meta_title: "Interactive Virtual Tour ― 物件・店舗のための360°バーチャルツアー",
+    meta_title: "Interactive Virtual Tour | 360 portfolio",
     meta_desc: "不動産・ホテル・店舗向けの360°バーチャルツアー制作スタジオ。実績をご覧いただき、あなたの空間も体感型ツアーに。",
 
     nav_portfolio: "ポートフォリオ",
@@ -175,7 +175,7 @@ var I18N = {
   },
 
   zh: {
-    meta_title: "Interactive Virtual Tour — 为您的物业与商业空间打造360°虚拟导览",
+    meta_title: "Interactive Virtual Tour | 360 portfolio",
     meta_desc: "专注于房产、酒店与商业空间的360°虚拟导览制作工作室。浏览我们的作品，让您的空间焕然一新。",
 
     nav_portfolio: "作品集",

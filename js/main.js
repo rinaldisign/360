@@ -10,8 +10,8 @@
      "thumb" = gambar preview (OG image) proyek, dipakai di grid supaya ringan.
      Tur 360 langsung (iframe) hanya dimuat di hero saat kartu diklik. */
   var PROJECTS = [
-    { id: "bellevue", name: "Bellevue Residences 3D", url: "https://bellevue.vt.rinaldisign.com/", thumb: "https://bellevue.vt.rinaldisign.com/assets/social-share.jpg", cat: "cat_residential", loc: "loc_austria" },
-    { id: "fhouse",   name: "F-House 3D",              url: "https://fhouse.vt.rinaldisign.com/",   thumb: "https://fhouse.vt.rinaldisign.com/assets/social-share.jpg",   cat: "cat_private_house", loc: "loc_indonesia" },
+    { id: "bellevue", name: "Bellevue Residences", url: "https://bellevue.vt.rinaldisign.com/", thumb: "https://bellevue.vt.rinaldisign.com/assets/social-share.jpg", cat: "cat_residential", loc: null },
+    { id: "fhouse",   name: "F-House",              url: "https://fhouse.vt.rinaldisign.com/",   thumb: "https://fhouse.vt.rinaldisign.com/assets/social-share.jpg",   cat: "cat_private_house", loc: null },
     { id: "cbar",     name: "Coboy Bar",             url: "https://cbar.vt.rinaldisign.com/",     thumb: "https://cbar.vt.rinaldisign.com/assets/social-share.jpg",     cat: "cat_bar", loc: "loc_mexico" },
     { id: "lab",      name: "Labougainvillea",       url: "https://lab.vt.rinaldisign.com/",      thumb: "https://lab.vt.rinaldisign.com/assets/social-share.jpg",      cat: "cat_resort", loc: "loc_bahamas" },
     { id: "luma",     name: "Luma Hotel",            url: "https://luma.vt.rinaldisign.com/",     thumb: "https://luma.vt.rinaldisign.com/assets/social-share.jpg",     cat: "cat_hotel", loc: "loc_sf" }
