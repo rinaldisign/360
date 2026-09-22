@@ -224,27 +224,41 @@ h1,h2,h3{
 }
 .hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
 
-.scroll-cue{
+.tap-cue{
   position:absolute;
-  bottom:26px; left:50%;
+  bottom:28px; left:50%;
   transform:translateX(-50%);
   z-index:2;
-  width:22px; height:34px;
-  border:1.4px solid rgba(255,255,255,0.5);
-  border-radius:20px;
+  width:52px; height:52px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
 }
-.scroll-cue span{
-  position:absolute; top:6px; left:50%;
-  width:3px; height:7px;
+.tap-dot{
+  width:10px; height:10px;
+  border-radius:50%;
   background:var(--gold-soft);
-  border-radius:3px;
-  transform:translateX(-50%);
-  animation:cue 1.8s ease infinite;
+  z-index:2;
+  transition:transform .25s ease;
 }
-@keyframes cue{
-  0%{opacity:1; top:6px;}
-  70%{opacity:0; top:16px;}
-  100%{opacity:0; top:6px;}
+.tap-cue:hover .tap-dot{transform:scale(1.2);}
+.tap-ring{
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  border:1.4px solid var(--gold-soft);
+  opacity:0;
+  animation:tapPulse 2.6s ease-out infinite;
+}
+.tap-ring--delay{animation-delay:1.3s;}
+@keyframes tapPulse{
+  0%{transform:scale(0.35); opacity:0.75;}
+  75%{opacity:0;}
+  100%{transform:scale(1); opacity:0;}
+}
+@media (prefers-reduced-motion: reduce){
+  .tap-ring{animation:none; opacity:0.4; transform:scale(0.7);}
 }
 
 /* ---------- Section heading ---------- */

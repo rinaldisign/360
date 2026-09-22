@@ -47,6 +47,7 @@ var I18N = {
     cta_desc: "Ceritakan properti, produk, atau ruang usaha Anda, dan kami bantu wujudkan dalam tur 360° yang meyakinkan.",
     cta_button: "Mulai diskusi",
     footer_text: "Studio produksi 3D web 360° panorama.",
+    hero_tap_aria: "Klik untuk lihat portofolio",
 
     cat_residential: "Hunian modern",
     cat_private_house: "Rumah tinggal pribadi",
@@ -103,6 +104,7 @@ var I18N = {
     cta_desc: "Tell us about your property, product, or venue, and we'll help bring it to life in a 360° tour that converts.",
     cta_button: "Start the conversation",
     footer_text: "3D web 360° panorama production studio.",
+    hero_tap_aria: "Click to view the portfolio",
 
     cat_residential: "Modern residence",
     cat_private_house: "Private residence",
@@ -159,6 +161,7 @@ var I18N = {
     cta_desc: "物件・商品・店舗について教えてください。説得力のある360°ツアーとして形にします。",
     cta_button: "相談を始める",
     footer_text: "3D Web 360°パノラマ制作スタジオ",
+    hero_tap_aria: "クリックしてポートフォリオを見る",
 
     cat_residential: "モダンレジデンス",
     cat_private_house: "個人邸宅",
@@ -215,6 +218,7 @@ var I18N = {
     cta_desc: "告诉我们您的房产、产品或场所，我们将为您打造极具说服力的360°导览。",
     cta_button: "开始沟通",
     footer_text: "3D网页360°全景制作工作室",
+    hero_tap_aria: "点击查看作品集",
 
     cat_residential: "现代住宅",
     cat_private_house: "私人住宅",

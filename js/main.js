@@ -8,11 +8,11 @@
   /* ---------- Data proyek portofolio ---------- */
   /* GANTI url dengan link tur 360 Anda sendiri jika berbeda */
   var PROJECTS = [
-    { id: "bellevue", name: "Bellevue Residences", url: "https://bellevue.vt.rinaldisign.com/", cat: "cat_residential", loc: "loc_austria" },
-    { id: "fhouse",   name: "F-House",              url: "https://fhouse.vt.rinaldisign.com/",   cat: "cat_private_house", loc: "loc_indonesia" },
+    { id: "bellevue", name: "Bellevue Residences", url: "https://bellevue.vt.rinaldisign.com/", cat: "cat_residential", loc: null },
+    { id: "fhouse",   name: "F-House",              url: "https://fhouse.vt.rinaldisign.com/",   cat: "cat_private_house", loc: null },
     { id: "cbar",     name: "Coboy Bar",             url: "https://cbar.vt.rinaldisign.com/",     cat: "cat_bar", loc: "loc_mexico" },
     { id: "lab",      name: "Labougainvillea",       url: "https://lab.vt.rinaldisign.com/",      cat: "cat_resort", loc: "loc_bahamas" },
-    { id: "luma",     name: "Luma Hotel",            url: "https://luma.vt.rinaldisign.com/",     cat: "cat_hotel", loc: "loc_us" }
+    { id: "luma",     name: "Luma Hotel",            url: "https://luma.vt.rinaldisign.com/",     cat: "cat_hotel", loc: "loc_sf" }
   ];
 
   var currentLang = "id";
@@ -130,6 +130,11 @@
     document.querySelectorAll("[data-i18n]").forEach(function (el) {
       var key = el.getAttribute("data-i18n");
       if (dict[key] != null) el.textContent = dict[key];
+    });
+
+    document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n-aria");
+      if (dict[key] != null) el.setAttribute("aria-label", dict[key]);
     });
 
     var titleEl = document.getElementById("pageTitle");
