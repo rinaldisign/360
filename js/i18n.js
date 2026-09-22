@@ -57,7 +57,9 @@ var I18N = {
 
     loc_mexico: "Meksiko",
     loc_sf: "San Francisco",
-    loc_bahamas: "Bahama"
+    loc_bahamas: "Bahama",
+    loc_austria: "Austria",
+    loc_indonesia: "Indonesia"
   },
 
   en: {
@@ -114,7 +116,9 @@ var I18N = {
 
     loc_mexico: "Mexico",
     loc_sf: "San Francisco",
-    loc_bahamas: "Bahamas"
+    loc_bahamas: "Bahamas",
+    loc_austria: "Austria",
+    loc_indonesia: "Indonesia"
   },
 
   ja: {
@@ -171,7 +175,9 @@ var I18N = {
 
     loc_mexico: "メキシコ",
     loc_sf: "サンフランシスコ",
-    loc_bahamas: "バハマ"
+    loc_bahamas: "バハマ",
+    loc_austria: "オーストリア",
+    loc_indonesia: "インドネシア"
   },
 
   zh: {
@@ -228,6 +234,8 @@ var I18N = {
 
     loc_mexico: "墨西哥",
     loc_sf: "旧金山",
-    loc_bahamas: "巴哈马"
+    loc_bahamas: "巴哈马",
+    loc_austria: "奥地利",
+    loc_indonesia: "印度尼西亚"
   }
 };
