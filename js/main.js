@@ -23,6 +23,12 @@
   var heroEmbed = document.getElementById("heroEmbed");
   var heroKicker = document.getElementById("heroKicker");
   var heroOpenFull = document.getElementById("heroOpenFull");
+  var heroThumb = document.getElementById("heroThumb");
+  var heroEmbedMobile = document.getElementById("heroEmbedMobile");
+  var mobileQuery = window.matchMedia("(max-width: 760px)");
+  var currentProject = null;
+
+  function isMobile() { return mobileQuery.matches; }
 
   /* ---------- Render kartu portofolio ---------- */
   function metaLine(p) {
@@ -75,15 +81,29 @@
 
   /* ---------- Hero swap ---------- */
   function setHero(p) {
+    currentProject = p;
     heroEmbed.classList.add("switching");
     setTimeout(function () {
-      heroFrame.src = p.url;
-      heroFrame.title = p.name;
+      if (!isMobile()) {
+        heroFrame.src = p.url;
+        heroFrame.title = p.name;
+      }
+      heroThumb.src = p.thumb;
+      heroThumb.alt = p.name;
+      heroEmbedMobile.href = p.url;
       heroKicker.textContent = p.name;
       heroOpenFull.href = p.url;
       heroEmbed.classList.remove("switching");
     }, 260);
   }
+
+  /* ---------- Muat iframe hero jika berpindah dari mobile ke desktop ---------- */
+  mobileQuery.addEventListener("change", function (e) {
+    if (!e.matches && currentProject && !heroFrame.src) {
+      heroFrame.src = currentProject.url;
+      heroFrame.title = currentProject.name;
+    }
+  });
 
   /* ---------- Reveal kartu portofolio (satu momen animasi) ---------- */
   function observeCards() {
@@ -178,8 +198,14 @@
   document.getElementById("footerYear").textContent = "© " + new Date().getFullYear();
 
   renderGrid();
-  heroFrame.src = PROJECTS[0].url; // muat langsung tanpa fade di load awal
-  heroFrame.title = PROJECTS[0].name;
+  currentProject = PROJECTS[0];
+  if (!isMobile()) {
+    heroFrame.src = PROJECTS[0].url; // muat langsung tanpa fade di load awal (desktop saja)
+    heroFrame.title = PROJECTS[0].name;
+  }
+  heroThumb.src = PROJECTS[0].thumb;
+  heroThumb.alt = PROJECTS[0].name;
+  heroEmbedMobile.href = PROJECTS[0].url;
   heroKicker.textContent = PROJECTS[0].name;
   heroOpenFull.href = PROJECTS[0].url;
 
