@@ -8,11 +8,11 @@
   /* ---------- Data proyek portofolio ---------- */
   /* GANTI url dengan link tur 360 Anda sendiri jika berbeda */
   var PROJECTS = [
-    { id: "bellevue", name: "Bellevue Residences", url: "https://bellevue.vt.rinaldisign.com/", cat: "cat_residential", loc: null },
-    { id: "fhouse",   name: "F-House",              url: "https://fhouse.vt.rinaldisign.com/",   cat: "cat_private_house", loc: null },
+    { id: "bellevue", name: "Bellevue Residences", url: "https://bellevue.vt.rinaldisign.com/", cat: "cat_residential", loc: "loc_austria" },
+    { id: "fhouse",   name: "F-House",              url: "https://fhouse.vt.rinaldisign.com/",   cat: "cat_private_house", loc: "loc_indonesia" },
     { id: "cbar",     name: "Coboy Bar",             url: "https://cbar.vt.rinaldisign.com/",     cat: "cat_bar", loc: "loc_mexico" },
     { id: "lab",      name: "Labougainvillea",       url: "https://lab.vt.rinaldisign.com/",      cat: "cat_resort", loc: "loc_bahamas" },
-    { id: "luma",     name: "Luma Hotel",            url: "https://luma.vt.rinaldisign.com/",     cat: "cat_hotel", loc: "loc_sf" }
+    { id: "luma",     name: "Luma Hotel",            url: "https://luma.vt.rinaldisign.com/",     cat: "cat_hotel", loc: "loc_us" }
   ];
 
   var currentLang = "id";
