@@ -229,18 +229,19 @@ h1,h2,h3{
   bottom:28px; left:50%;
   transform:translateX(-50%);
   z-index:2;
-  width:54px; height:54px;
+  width:38px; height:38px;
   display:flex;
   align-items:center;
   justify-content:center;
   border-radius:50%;
-  background:rgba(11,18,32,0.4);
-  border:1.4px solid rgba(242,206,138,0.55);
-  transition:border-color .25s ease, background .25s ease;
+  background:rgba(11,18,32,0.28);
+  border:1.2px solid rgba(242,206,138,0.32);
+  opacity:0.65;
+  transition:border-color .25s ease, background .25s ease, opacity .25s ease;
 }
-.tap-cue:hover{border-color:var(--gold-soft); background:rgba(11,18,32,0.6);}
+.tap-cue:hover{border-color:rgba(242,206,138,0.6); background:rgba(11,18,32,0.5); opacity:1;}
 .tap-dot{
-  width:14px; height:14px;
+  width:9px; height:9px;
   border-radius:50%;
   background:var(--gold-soft);
   z-index:2;
@@ -251,14 +252,14 @@ h1,h2,h3{
   position:absolute;
   inset:-1px;
   border-radius:50%;
-  border:1.4px solid var(--gold-soft);
+  border:1.2px solid rgba(242,206,138,0.7);
   opacity:0;
   animation:tapPulse 2.6s ease-out infinite;
 }
 .tap-ring--delay{animation-delay:1.3s;}
 @keyframes tapPulse{
-  0%{transform:scale(1); opacity:0.8;}
-  100%{transform:scale(1.9); opacity:0;}
+  0%{transform:scale(1); opacity:0.45;}
+  100%{transform:scale(1.6); opacity:0;}
 }
 @media (prefers-reduced-motion: reduce){
   .tap-ring{animation:none; opacity:0;}
@@ -296,6 +297,8 @@ h1,h2,h3{
   background:var(--surface-2);
 }
 .port-frame iframe, .port-frame img{width:100%; height:100%; border:0; display:block; object-fit:cover;}
+.port-frame.no-thumb img{display:none;}
+.port-frame.no-thumb{background:linear-gradient(135deg, var(--surface-2), var(--surface));}
 .port-play{
   position:absolute; inset:0;
   display:flex; align-items:center; justify-content:center;
