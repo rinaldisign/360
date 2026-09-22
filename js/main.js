@@ -6,13 +6,15 @@
   "use strict";
 
   /* ---------- Data proyek portofolio ---------- */
-  /* GANTI url dengan link tur 360 Anda sendiri jika berbeda */
+  /* GANTI url dan thumb dengan link/gambar tur 360 Anda sendiri jika berbeda.
+     "thumb" = gambar preview (OG image) proyek, dipakai di grid supaya ringan.
+     Tur 360 langsung (iframe) hanya dimuat di hero saat kartu diklik. */
   var PROJECTS = [
-    { id: "bellevue", name: "Bellevue Residences", url: "https://bellevue.vt.rinaldisign.com/", cat: "cat_residential", loc: null },
-    { id: "fhouse",   name: "F-House",              url: "https://fhouse.vt.rinaldisign.com/",   cat: "cat_private_house", loc: null },
-    { id: "cbar",     name: "Coboy Bar",             url: "https://cbar.vt.rinaldisign.com/",     cat: "cat_bar", loc: "loc_mexico" },
-    { id: "lab",      name: "Labougainvillea",       url: "https://lab.vt.rinaldisign.com/",      cat: "cat_resort", loc: "loc_bahamas" },
-    { id: "luma",     name: "Luma Hotel",            url: "https://luma.vt.rinaldisign.com/",     cat: "cat_hotel", loc: "loc_sf" }
+    { id: "bellevue", name: "Bellevue Residences", url: "https://bellevue.vt.rinaldisign.com/", thumb: "https://bellevue.vt.rinaldisign.com/assets/social-share.jpg", cat: "cat_residential", loc: null },
+    { id: "fhouse",   name: "F-House",              url: "https://fhouse.vt.rinaldisign.com/",   thumb: "https://fhouse.vt.rinaldisign.com/assets/social-share.jpg",   cat: "cat_private_house", loc: null },
+    { id: "cbar",     name: "Coboy Bar",             url: "https://cbar.vt.rinaldisign.com/",     thumb: "https://cbar.vt.rinaldisign.com/assets/floorplan.jpg",        cat: "cat_bar", loc: "loc_mexico" },
+    { id: "lab",      name: "Labougainvillea",       url: "https://lab.vt.rinaldisign.com/",      thumb: "https://lab.vt.rinaldisign.com/assets/social-share.jpg",      cat: "cat_resort", loc: "loc_bahamas" },
+    { id: "luma",     name: "Luma Hotel",            url: "https://luma.vt.rinaldisign.com/",     thumb: "https://luma.vt.rinaldisign.com/assets/floorplan.jpg",        cat: "cat_hotel", loc: "loc_sf" }
   ];
 
   var currentLang = "id";
@@ -42,8 +44,10 @@
           '<a class="port-full" href="' + p.url + '" target="_blank" rel="noopener" aria-label="Open full tour">' +
             '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 4h6v6M20 4l-8 8M10 4H4v16h16v-6"/></svg>' +
           '</a>' +
-          '<iframe data-src="' + p.url + '" title="' + p.name + '" loading="lazy" ' +
-            'allow="fullscreen; autoplay; gyroscope; accelerometer; xr-spatial-tracking"></iframe>' +
+          '<img src="' + p.thumb + '" alt="' + p.name + '" loading="lazy" decoding="async">' +
+          '<div class="port-play" aria-hidden="true">' +
+            '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>' +
+          '</div>' +
         '</div>' +
         '<div class="port-body">' +
           '<div class="port-name">' + p.name + '</div>' +
@@ -59,7 +63,6 @@
       grid.appendChild(card);
     });
     observeCards();
-    observeLazyFrames();
   }
 
   function updateMetaLines() {
@@ -79,25 +82,6 @@
       heroOpenFull.href = p.url;
       heroEmbed.classList.remove("switching");
     }, 260);
-  }
-
-  /* ---------- Lazy-load iframe grid (hemat resource) ---------- */
-  function observeLazyFrames() {
-    var frames = grid.querySelectorAll("iframe[data-src]");
-    if (!("IntersectionObserver" in window)) {
-      frames.forEach(function (f) { f.src = f.getAttribute("data-src"); });
-      return;
-    }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          var f = entry.target;
-          if (!f.src) f.src = f.getAttribute("data-src");
-          io.unobserve(f);
-        }
-      });
-    }, { rootMargin: "200px 0px" });
-    frames.forEach(function (f) { io.observe(f); });
   }
 
   /* ---------- Reveal kartu portofolio (satu momen animasi) ---------- */
