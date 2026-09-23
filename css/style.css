@@ -327,14 +327,22 @@ h1,h2,h3{
   position:absolute; top:50%; left:50%;
   width:76px; height:76px;
   transform:translate(-50%,-50%);
-  pointer-events:none;
+  z-index:3;
+  display:block;
+  cursor:pointer;
   filter:drop-shadow(0 8px 20px rgba(0,0,0,0.5));
   opacity:0.92;
+  transition:opacity .25s ease, filter .25s ease;
+}
+.port-slide-360:hover, .port-slide-360:focus-visible{
+  opacity:1;
+  filter:drop-shadow(0 8px 22px rgba(0,0,0,0.6)) brightness(1.15);
 }
 .port-slide-360 img{
   width:100%; height:100%;
   object-fit:contain;
   display:block;
+  pointer-events:none;
   animation:spin 16s linear infinite;
 }
 .port-slide-full{
@@ -346,7 +354,7 @@ h1,h2,h3{
   border:1px solid rgba(255,255,255,0.25);
   display:flex; align-items:center; justify-content:center;
   color:#fff;
-  transition:background .25s ease, border-color .25s ease;
+  transition:background .25s ease, border-color .25s ease, opacity .4s ease;
   pointer-events:auto;
 }
 .port-slide-full:hover{background:rgba(11,18,32,0.85); border-color:var(--gold);}
@@ -356,6 +364,7 @@ h1,h2,h3{
   padding:28px 30px 26px;
   z-index:2;
   pointer-events:none;
+  transition:opacity .4s ease;
 }
 .port-slide-title{
   font-family:var(--font-display);
@@ -377,7 +386,7 @@ h1,h2,h3{
   color:rgba(255,255,255,0.82);
   display:flex; align-items:center; justify-content:center;
   cursor:pointer;
-  transition:color .25s ease, transform .25s ease;
+  transition:color .25s ease, transform .25s ease, opacity .4s ease;
 }
 .port-nav svg{width:30px; height:30px;}
 .port-nav-prev{left:6px; animation:portNavNudgeLeft 2.6s ease-in-out infinite;}
@@ -387,6 +396,149 @@ h1,h2,h3{
 .port-nav-next:hover{transform:translateY(-50%) translateX(4px);}
 @keyframes portNavNudgeLeft{0%,100%{transform:translateY(-50%) translateX(0);} 50%{transform:translateY(-50%) translateX(-6px);}}
 @keyframes portNavNudgeRight{0%,100%{transform:translateY(-50%) translateX(0);} 50%{transform:translateY(-50%) translateX(6px);}}
+
+/* ---------- Embed 360 di tempat ---------- */
+/* Saat embed aktif, elemen carousel memudar */
+.port-slider.embed-active .port-slide-caption,
+.port-slider.embed-active .port-slide-full,
+.port-slider.embed-active .port-nav{opacity:0;}
+
+/* Animasi ikon 360 saat diklik: membesar + bercahaya, lalu mengecil & hilang, disertai cincin emas yang menyebar */
+.port-slide-360::after{
+  content:"";
+  position:absolute; inset:-4px;
+  border-radius:50%;
+  border:1.5px solid var(--gold-soft);
+  opacity:0;
+  pointer-events:none;
+}
+.port-slide-360.is-launching{
+  pointer-events:none;
+  animation:launch360 .75s var(--ease) forwards;
+}
+.port-slide-360.is-launching::after{animation:launchRing .95s cubic-bezier(.2,.7,.3,1) forwards;}
+@keyframes launch360{
+  0%  {transform:translate(-50%,-50%) scale(1);    opacity:.92; filter:drop-shadow(0 8px 20px rgba(0,0,0,.5));}
+  32% {transform:translate(-50%,-50%) scale(1.3);  opacity:1;   filter:drop-shadow(0 0 28px rgba(242,206,138,.85));}
+  100%{transform:translate(-50%,-50%) scale(.5);   opacity:0;   filter:drop-shadow(0 0 10px rgba(242,206,138,0));}
+}
+@keyframes launchRing{
+  0%  {transform:scale(1);   opacity:.9;}
+  100%{transform:scale(3.4); opacity:0;}
+}
+/* Ikon muncul kembali saat embed ditutup */
+.port-slide-360.is-returning{animation:return360 .8s var(--ease) .25s both;}
+@keyframes return360{
+  0%  {transform:translate(-50%,-50%) scale(.55); opacity:0;}
+  100%{transform:translate(-50%,-50%) scale(1);   opacity:.92;}
+}
+
+/* Jendela embed: terbuka sebagai lingkaran yang meluas dari titik ikon 360 */
+.port-embed{
+  position:absolute; inset:0;
+  z-index:6;
+  display:flex;
+  flex-direction:column;
+  background:radial-gradient(120% 120% at 50% 50%, var(--surface-2) 0%, var(--bg) 100%);
+  clip-path:circle(0% at 50% 50%);
+  visibility:hidden;
+  pointer-events:none;
+  transition:clip-path .75s cubic-bezier(.6,0,.3,1), visibility 0s linear .75s;
+}
+.port-embed.is-open{
+  clip-path:circle(80% at 50% 50%);
+  visibility:visible;
+  pointer-events:auto;
+  transition:clip-path 1s var(--ease) .18s, visibility 0s;
+}
+.port-embed-bar{
+  flex:none;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:9px 12px 9px 20px;
+  background:rgba(11,18,32,0.94);
+  border-bottom:1px solid var(--line-strong);
+  opacity:0;
+  transform:translateY(-10px);
+  transition:opacity .25s ease, transform .3s ease;
+}
+.port-embed.is-open .port-embed-bar{
+  opacity:1;
+  transform:none;
+  transition:opacity .5s ease .75s, transform .6s var(--ease) .75s;
+}
+.port-embed-heading{display:flex; align-items:center; gap:12px; min-width:0;}
+.port-embed-tag{
+  flex:none;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.06em;
+  color:var(--gold-soft);
+  background:var(--gold-dim);
+  border:1px solid rgba(214,167,86,0.3);
+  border-radius:100px;
+  padding:3px 9px;
+}
+.port-embed-title{
+  font-family:var(--font-display);
+  font-size:17px;
+  font-weight:500;
+  color:#fff;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.port-embed-close{
+  flex:none;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  font-family:var(--font-body);
+  font-size:13px;
+  font-weight:600;
+  color:var(--text);
+  background:rgba(255,255,255,0.05);
+  border:1px solid var(--line-strong);
+  border-radius:100px;
+  padding:8px 14px 8px 16px;
+  cursor:pointer;
+  transition:background .25s ease, border-color .25s ease, color .25s ease;
+}
+.port-embed-close svg{width:15px; height:15px; transition:transform .4s var(--ease);}
+.port-embed-close:hover{background:var(--gold-dim); border-color:var(--gold); color:var(--gold-soft);}
+.port-embed-close:hover svg{transform:rotate(90deg);}
+
+.port-embed-stage{position:relative; flex:1; min-height:0;}
+.port-embed-stage iframe{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  border:0; display:block;
+  background:var(--bg);
+  opacity:0;
+  transition:opacity .7s ease;
+}
+.port-embed.is-ready .port-embed-stage iframe{opacity:1;}
+
+/* Loader: ikon 360 berputar sampai tur siap tampil */
+.port-embed-loader{
+  position:absolute; top:50%; left:50%;
+  width:64px; height:64px;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+  opacity:.85;
+  transition:opacity .5s ease;
+}
+.port-embed-loader img{width:100%; height:100%; object-fit:contain; animation:spin 5s linear infinite;}
+.port-embed.is-ready .port-embed-loader{opacity:0;}
+
+@media (max-width:760px){
+  .port-embed-bar{padding:7px 8px 7px 14px;}
+  .port-embed-title{font-size:15px;}
+  .port-embed-close{padding:7px 12px 7px 14px;}
+  .port-embed-loader{width:52px; height:52px;}
+}
 
 /* ---------- Info (secondary / side) ---------- */
 .info{

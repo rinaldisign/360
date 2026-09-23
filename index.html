@@ -100,6 +100,25 @@
         <button type="button" class="port-nav port-nav-next" id="portNext" data-i18n-aria="port_next_aria" aria-label="Berikutnya">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 5l9 7-9 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
+
+        <!-- EMBED 360 DI TEMPAT (dibuka dari ikon 360 di tengah slide) -->
+        <div class="port-embed" id="portEmbed" role="region" aria-label="360" aria-hidden="true">
+          <div class="port-embed-bar">
+            <div class="port-embed-heading">
+              <span class="port-embed-tag" aria-hidden="true">360°</span>
+              <span class="port-embed-title" id="portEmbedTitle"></span>
+            </div>
+            <button type="button" class="port-embed-close" id="portEmbedClose" data-i18n-aria="embed_close_aria" aria-label="Tutup tur 360 dan kembali ke carousel">
+              <span data-i18n="embed_close">Tutup</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+          <div class="port-embed-stage">
+            <iframe id="portEmbedFrame" src="about:blank" title="360"
+              allow="fullscreen; autoplay; gyroscope; accelerometer; xr-spatial-tracking"></iframe>
+            <div class="port-embed-loader" aria-hidden="true"><img src="assets/icon-360.png" alt="" draggable="false"></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>

@@ -32,6 +32,13 @@
   var mobileQuery = window.matchMedia("(max-width: 760px)");
   var currentProject = null;
 
+  /* Embed 360 di tempat (di dalam area carousel) */
+  var embed = document.getElementById("portEmbed");
+  var embedFrame = document.getElementById("portEmbedFrame");
+  var embedTitle = document.getElementById("portEmbedTitle");
+  var embedClose = document.getElementById("portEmbedClose");
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
   function isMobile() { return mobileQuery.matches; }
 
   /* ---------- Kartu / slide portofolio ---------- */
@@ -51,7 +58,7 @@
       '<img src="' + p.thumb + '" alt="' + p.name + '" loading="lazy" decoding="async" draggable="false" ' +
         'onerror="this.onerror=null; var alt=this.src.replace(/social-share\\.jpg$/, \'floorplan.jpg\'); if (this.src !== alt) { this.src = alt; } else { this.closest(\'.port-slide\').classList.add(\'no-thumb\'); }">' +
       '<div class="port-slide-scrim" aria-hidden="true"></div>' +
-      '<div class="port-slide-360" aria-hidden="true"><img src="assets/icon-360.png" alt="" draggable="false"></div>' +
+      '<a class="port-slide-360" href="' + p.url + '" target="_blank" rel="noopener" aria-label="Buka tur 360 ' + p.name + '" tabindex="' + (isClone ? "-1" : "0") + '"><img src="assets/icon-360.png" alt="" draggable="false"></a>' +
       '<a class="port-slide-full" href="' + p.url + '" target="_blank" rel="noopener" aria-label="Open full tour" tabindex="' + (isClone ? "-1" : "0") + '">' +
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 4h6v6M20 4l-8 8M10 4H4v16h16v-6"/></svg>' +
       '</a>' +
@@ -93,6 +100,7 @@
   var dragMoved = false;
   var dragStartX = 0;
   var dragStartPx = 0;
+  var dragPointerId = null;
   var suppressNextClick = false;
 
   function basePx() { return -(pos * slideWidthPx); }
@@ -150,17 +158,21 @@
     dragMoved = false;
     dragStartX = e.clientX;
     dragStartPx = basePx();
+    dragPointerId = e.pointerId;
     track.style.transition = "none";
-    if (track.setPointerCapture) {
-      try { track.setPointerCapture(e.pointerId); } catch (err) {}
-    }
   }
 
   function onPointerMove(e) {
     if (!isDragging) return;
     var dx = e.clientX - dragStartX;
-    if (Math.abs(dx) > 4) dragMoved = true;
-    setTransformRaw(dragStartPx + dx);
+    if (!dragMoved && Math.abs(dx) > 4) {
+      dragMoved = true;
+      // pointer capture baru dipasang saat benar-benar drag, supaya klik biasa (mis. pada ikon 360) tidak dibelokkan
+      if (track.setPointerCapture && dragPointerId != null) {
+        try { track.setPointerCapture(dragPointerId); } catch (err) {}
+      }
+    }
+    if (dragMoved) setTransformRaw(dragStartPx + dx);
   }
 
   function onPointerUp(e) {
@@ -175,6 +187,7 @@
     if (track.releasePointerCapture) {
       try { track.releasePointerCapture(e.pointerId); } catch (err) {}
     }
+    dragPointerId = null;
     if (dragMoved) { suppressNextClick = true; }
   }
 
@@ -192,6 +205,17 @@
       return;
     }
     if (e.target.closest(".port-slide-full")) return; // biarkan link buka tab baru
+    var icon = e.target.closest(".port-slide-360");
+    if (icon) {
+      // Ctrl/Cmd/Shift + klik tetap boleh membuka tab baru; klik biasa membuka embed di tempat
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      e.preventDefault();
+      if (isAnimating) return;
+      var iconSlide = icon.closest(".port-slide");
+      var ip = iconSlide && PROJECTS[parseInt(iconSlide.getAttribute("data-idx"), 10)];
+      if (ip) openEmbed(ip, icon);
+      return;
+    }
     var slideEl = e.target.closest(".port-slide");
     if (!slideEl) return;
     var idx = parseInt(slideEl.getAttribute("data-idx"), 10);
@@ -199,6 +223,102 @@
     if (!p) return;
     setHero(p);
     window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  /* ---------- Embed 360 di tempat: buka / tutup ---------- */
+  var embedState = "closed";        // closed | opening | open | closing
+  var embedTrigger = null;          // ikon 360 yang memicu embed
+  var embedTimers = [];
+  var embedLoaded = false;
+  var embedRevealed = false;
+
+  function embedLater(fn, ms) { embedTimers.push(setTimeout(fn, ms)); }
+  function embedClearTimers() { embedTimers.forEach(clearTimeout); embedTimers = []; }
+
+  function embedMaybeReady() {
+    if (embedLoaded && embedRevealed && (embedState === "opening" || embedState === "open")) {
+      embed.classList.add("is-ready");
+    }
+  }
+
+  function setCarouselInert(on) {
+    [track, btnPrev, btnNext].forEach(function (el) {
+      if (on) el.setAttribute("inert", ""); else el.removeAttribute("inert");
+    });
+  }
+
+  function openEmbed(p, trigger) {
+    if (embedState === "opening" || embedState === "open") return;
+    embedClearTimers();
+    var rm = reduceMotion.matches;
+
+    embedState = "opening";
+    embedTrigger = trigger;
+    embedLoaded = false;
+    embedRevealed = false;
+
+    embed.classList.remove("is-ready");
+    embedTitle.textContent = p.name;
+    embedFrame.title = p.name;
+    embedFrame.src = p.url;
+    embed.setAttribute("aria-label", p.name);
+    embed.setAttribute("aria-hidden", "false");
+
+    trigger.classList.remove("is-returning");
+    trigger.classList.add("is-launching");
+    slider.classList.add("embed-active");
+    setCarouselInert(true);
+    embed.classList.add("is-open");
+
+    embedLater(function () { embedRevealed = true; embedMaybeReady(); }, rm ? 0 : 1000);
+    embedLater(function () {
+      embedState = "open";
+      try { embedClose.focus({ preventScroll: true }); } catch (err) {}
+    }, rm ? 0 : 1000);
+    // cadangan: jika event load tidak pernah datang, tampilkan iframe apa adanya
+    embedLater(function () { embedLoaded = true; embedMaybeReady(); }, 9000);
+  }
+
+  function closeEmbed() {
+    if (embedState === "closed" || embedState === "closing") return;
+    embedClearTimers();
+    var rm = reduceMotion.matches;
+
+    embedState = "closing";
+    embed.classList.remove("is-open", "is-ready");
+    slider.classList.remove("embed-active");
+    setCarouselInert(false);
+
+    if (embedTrigger) {
+      embedTrigger.classList.remove("is-launching");
+      embedTrigger.classList.add("is-returning");
+      try { embedTrigger.focus({ preventScroll: true }); } catch (err) {}
+    }
+
+    // setelah animasi menutup selesai, hentikan tur (lepas iframe) agar tidak jalan di belakang layar
+    embedLater(function () {
+      embedFrame.src = "about:blank";
+      embed.setAttribute("aria-hidden", "true");
+      embedState = "closed";
+    }, rm ? 0 : 800);
+  }
+
+  embedFrame.addEventListener("load", function () {
+    if (embedState !== "opening" && embedState !== "open") return;
+    if (embedFrame.getAttribute("src") === "about:blank") return;
+    embedLoaded = true;
+    embedMaybeReady();
+  });
+
+  embedClose.addEventListener("click", closeEmbed);
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && (embedState === "opening" || embedState === "open")) closeEmbed();
+  });
+
+  // animasi "kembali" ikon 360 selesai -> bersihkan class
+  track.addEventListener("animationend", function (e) {
+    if (e.animationName === "return360") e.target.classList.remove("is-returning");
   });
 
   var resizeTimer = null;

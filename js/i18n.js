@@ -50,6 +50,8 @@ var I18N = {
     hero_tap_aria: "Klik untuk lihat portofolio",
     port_prev_aria: "Sebelumnya",
     port_next_aria: "Berikutnya",
+    embed_close: "Tutup",
+    embed_close_aria: "Tutup tur 360 dan kembali ke carousel",
 
     cat_residential: "Hunian modern",
     cat_private_house: "Rumah tinggal pribadi",
@@ -112,6 +114,8 @@ var I18N = {
     hero_tap_aria: "Click to view the portfolio",
     port_prev_aria: "Previous",
     port_next_aria: "Next",
+    embed_close: "Close",
+    embed_close_aria: "Close the 360 tour and return to the carousel",
 
     cat_residential: "Modern residence",
     cat_private_house: "Private residence",
@@ -174,6 +178,8 @@ var I18N = {
     hero_tap_aria: "クリックしてポートフォリオを見る",
     port_prev_aria: "前へ",
     port_next_aria: "次へ",
+    embed_close: "閉じる",
+    embed_close_aria: "360ツアーを閉じてカルーセルに戻る",
 
     cat_residential: "モダンレジデンス",
     cat_private_house: "個人邸宅",
@@ -236,6 +242,8 @@ var I18N = {
     hero_tap_aria: "点击查看作品集",
     port_prev_aria: "上一个",
     port_next_aria: "下一个",
+    embed_close: "关闭",
+    embed_close_aria: "关闭360导览并返回轮播",
 
     cat_residential: "现代住宅",
     cat_private_house: "私人住宅",
