@@ -48,6 +48,8 @@ var I18N = {
     cta_button: "Mulai diskusi",
     footer_text: "Studio produksi 3D web 360° panorama.",
     hero_tap_aria: "Klik untuk lihat portofolio",
+    port_prev_aria: "Sebelumnya",
+    port_next_aria: "Berikutnya",
 
     cat_residential: "Hunian modern",
     cat_private_house: "Rumah tinggal pribadi",
@@ -108,6 +110,8 @@ var I18N = {
     cta_button: "Start the conversation",
     footer_text: "3D web 360° panorama production studio.",
     hero_tap_aria: "Click to view the portfolio",
+    port_prev_aria: "Previous",
+    port_next_aria: "Next",
 
     cat_residential: "Modern residence",
     cat_private_house: "Private residence",
@@ -168,6 +172,8 @@ var I18N = {
     cta_button: "相談を始める",
     footer_text: "3D Web 360°パノラマ制作スタジオ",
     hero_tap_aria: "クリックしてポートフォリオを見る",
+    port_prev_aria: "前へ",
+    port_next_aria: "次へ",
 
     cat_residential: "モダンレジデンス",
     cat_private_house: "個人邸宅",
@@ -228,6 +234,8 @@ var I18N = {
     cta_button: "开始沟通",
     footer_text: "3D网页360°全景制作工作室",
     hero_tap_aria: "点击查看作品集",
+    port_prev_aria: "上一个",
+    port_next_aria: "下一个",
 
     cat_residential: "现代住宅",
     cat_private_house: "私人住宅",

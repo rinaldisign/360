@@ -92,7 +92,15 @@
         <h2 data-i18n="portfolio_title">Tur yang pernah kami buat</h2>
         <p data-i18n="portfolio_desc">Setiap proyek dapat dijelajahi langsung di bawah ini. Klik salah satu untuk menampilkannya di atas, atau buka layar penuh.</p>
       </div>
-      <div class="portfolio-grid" id="portfolioGrid"><!-- rendered by main.js --></div>
+      <div class="port-slider" id="portfolioSlider">
+        <div class="port-track" id="portfolioTrack"><!-- rendered by main.js --></div>
+        <button type="button" class="port-nav port-nav-prev" id="portPrev" data-i18n-aria="port_prev_aria" aria-label="Sebelumnya">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M16 5l-9 7 9 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button type="button" class="port-nav port-nav-next" id="portNext" data-i18n-aria="port_next_aria" aria-label="Berikutnya">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 5l9 7-9 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
     </div>
   </section>
 

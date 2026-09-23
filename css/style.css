@@ -276,87 +276,117 @@ h1,h2,h3{
 .section-heading h2{font-size:clamp(26px, 3.4vw, 38px); margin-bottom:14px;}
 .section-heading p{font-size:15.5px; color:var(--text-dim); line-height:1.65; margin:0;}
 
-/* ---------- Portfolio (primary) ---------- */
+/* ---------- Portfolio (primary) — full-bleed slider ---------- */
 .portfolio{padding:96px 0 88px;}
-.portfolio-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
-  gap:26px;
-}
-.port-card{
+.port-slider{
   position:relative;
   border-radius:var(--radius-lg);
   overflow:hidden;
   background:var(--surface);
   border:1px solid var(--line);
-  cursor:pointer;
-  opacity:0;
-  transform:translateY(18px);
-  transition:opacity .7s var(--ease), transform .7s var(--ease), border-color .3s ease, box-shadow .4s ease;
+  height:min(58vh, 560px);
+  min-height:340px;
+  isolation:isolate;
 }
-.port-card.in-view{opacity:1; transform:translateY(0);}
-.port-card:hover{border-color:var(--line-strong); box-shadow:0 24px 60px rgba(0,0,0,0.35);}
-.port-card:hover .port-frame::after{opacity:0;}
-.port-frame{
+.port-track{
+  position:absolute;
+  top:0; left:0;
+  height:100%;
+  display:flex;
+  will-change:transform;
+  transition:transform .55s var(--ease);
+  touch-action:pan-y;
+  cursor:grab;
+}
+.port-track:active{cursor:grabbing;}
+.port-slide{
   position:relative;
-  aspect-ratio:16/10;
+  flex:none;
+  height:100%;
+  overflow:hidden;
   background:var(--surface-2);
+  cursor:pointer;
+  touch-action:pan-y;
 }
-.port-frame iframe, .port-frame img{width:100%; height:100%; border:0; display:block; object-fit:cover;}
-.port-frame.no-thumb img{display:none;}
-.port-frame.no-thumb{background:linear-gradient(135deg, var(--surface-2), var(--surface));}
-.port-play{
+.port-slide img{
+  width:100%; height:100%;
+  object-fit:cover;
+  display:block;
+  -webkit-user-drag:none;
+  user-select:none;
+  pointer-events:none;
+}
+.port-slide.no-thumb{background:linear-gradient(135deg, var(--surface-2), var(--surface));}
+.port-slide.no-thumb img{display:none;}
+.port-slide-scrim{
   position:absolute; inset:0;
-  display:flex; align-items:center; justify-content:center;
-  z-index:2;
-  opacity:0;
-  transition:opacity .3s ease;
+  background:linear-gradient(180deg, rgba(6,10,20,0) 40%, rgba(6,10,20,0.32) 66%, rgba(6,10,20,0.9) 100%);
+  pointer-events:none;
 }
-.port-play svg{
-  width:22px; height:22px;
-  color:#1A1103;
-  margin-left:2px;
+.port-slide-360{
+  position:absolute; top:50%; left:50%;
+  width:76px; height:76px;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+  filter:drop-shadow(0 8px 20px rgba(0,0,0,0.5));
+  opacity:0.92;
 }
-.port-play::before{
-  content:"";
-  position:absolute; width:52px; height:52px;
-  border-radius:50%;
-  background:var(--gold-soft);
-  box-shadow:0 10px 30px rgba(0,0,0,0.4);
+.port-slide-360 img{
+  width:100%; height:100%;
+  object-fit:contain;
+  display:block;
+  animation:spin 16s linear infinite;
 }
-.port-card:hover .port-play{opacity:1;}
-.port-frame::after{
-  content:"";
-  position:absolute; inset:0;
-  background:linear-gradient(180deg, rgba(11,18,32,0) 55%, rgba(11,18,32,0.65) 100%);
-  transition:opacity .3s ease;
-}
-.port-badge{
-  position:absolute; top:14px; left:14px;
-  font-size:11px; font-weight:700;
-  letter-spacing:0.02em;
-  color:#1A1103;
-  background:var(--gold);
-  padding:4px 10px;
-  border-radius:100px;
-  z-index:2;
-}
-.port-full{
-  position:absolute; top:12px; right:12px;
+.port-slide-full{
+  position:absolute; top:16px; right:16px;
   z-index:3;
-  width:32px; height:32px;
+  width:34px; height:34px;
   border-radius:100px;
   background:rgba(11,18,32,0.55);
   border:1px solid rgba(255,255,255,0.25);
   display:flex; align-items:center; justify-content:center;
   color:#fff;
   transition:background .25s ease, border-color .25s ease;
+  pointer-events:auto;
 }
-.port-full:hover{background:rgba(11,18,32,0.85); border-color:var(--gold);}
-.port-full svg{width:14px; height:14px;}
-.port-body{padding:18px 20px 20px;}
-.port-name{font-family:var(--font-display); font-size:19px; font-weight:500; margin-bottom:5px;}
-.port-meta{font-size:13px; color:var(--text-dim);}
+.port-slide-full:hover{background:rgba(11,18,32,0.85); border-color:var(--gold);}
+.port-slide-full svg{width:15px; height:15px;}
+.port-slide-caption{
+  position:absolute; left:0; right:0; bottom:0;
+  padding:28px 30px 26px;
+  z-index:2;
+  pointer-events:none;
+}
+.port-slide-title{
+  font-family:var(--font-display);
+  font-size:clamp(20px, 2.6vw, 28px);
+  font-weight:500;
+  color:#fff;
+  margin-bottom:5px;
+}
+.port-slide-meta{font-size:13.5px; color:rgba(243,245,250,0.8);}
+
+.port-nav{
+  position:absolute; top:50%;
+  transform:translateY(-50%);
+  z-index:4;
+  width:46px; height:46px;
+  border-radius:100px;
+  border:none;
+  background:transparent;
+  color:rgba(255,255,255,0.82);
+  display:flex; align-items:center; justify-content:center;
+  cursor:pointer;
+  transition:color .25s ease, transform .25s ease;
+}
+.port-nav svg{width:30px; height:30px;}
+.port-nav-prev{left:6px; animation:portNavNudgeLeft 2.6s ease-in-out infinite;}
+.port-nav-next{right:6px; animation:portNavNudgeRight 2.6s ease-in-out infinite;}
+.port-nav:hover{color:var(--gold-soft);}
+.port-nav-prev:hover{transform:translateY(-50%) translateX(-4px);}
+.port-nav-next:hover{transform:translateY(-50%) translateX(4px);}
+@keyframes portNavNudgeLeft{0%,100%{transform:translateY(-50%) translateX(0);} 50%{transform:translateY(-50%) translateX(-6px);}}
+@keyframes portNavNudgeRight{0%,100%{transform:translateY(-50%) translateX(0);} 50%{transform:translateY(-50%) translateX(6px);}}
 
 /* ---------- Info (secondary / side) ---------- */
 .info{
@@ -528,6 +558,13 @@ a:focus-visible, button:focus-visible, summary:focus-visible{
   .tap-cue{display:none;}
 
   .portfolio{padding:64px 0;}
+  .port-slider{height:min(46vh, 380px); min-height:240px; border-radius:var(--radius-md);}
+  .port-slide-360{width:54px; height:54px;}
+  .port-slide-caption{padding:18px 18px 16px;}
+  .port-slide-title{font-size:19px;}
+  .port-slide-full{width:30px; height:30px; top:12px; right:12px;}
+  .port-nav{width:38px; height:38px;}
+  .port-nav svg{width:24px; height:24px;}
   .info{padding:52px 0;}
   .cta-final{padding:72px 0;}
 }
