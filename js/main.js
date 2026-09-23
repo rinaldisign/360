@@ -11,6 +11,7 @@
      Tur 360 langsung (iframe) hanya dimuat di hero saat kartu diklik. */
   var PROJECTS = [
     { id: "bellevue", name: "Bellevue Residences 3D", url: "https://bellevue.vt.rinaldisign.com/", thumb: "https://bellevue.vt.rinaldisign.com/assets/social-share.jpg", cat: "cat_residential", loc: "loc_austria" },
+    { id: "miao", name: "Miniami Aoyama Apartments 3D", url: "https://aoyama.vt.rinaldisign.com/", thumb: "https://aoyama.vt.rinaldisign.com/assets/social-share.jpg", cat: "cat_residential", loc: "loc_tokyo" },
     { id: "fhouse",   name: "F-House 3D",              url: "https://fhouse.vt.rinaldisign.com/",   thumb: "https://fhouse.vt.rinaldisign.com/assets/social-share.jpg",   cat: "cat_private_house", loc: "loc_indonesia" },
     { id: "cbar",     name: "Coboy Bar",             url: "https://cbar.vt.rinaldisign.com/",     thumb: "https://cbar.vt.rinaldisign.com/assets/social-share.jpg",     cat: "cat_bar", loc: "loc_mexico" },
     { id: "lab",      name: "Labougainvillea",       url: "https://lab.vt.rinaldisign.com/",      thumb: "https://lab.vt.rinaldisign.com/assets/social-share.jpg",      cat: "cat_resort", loc: "loc_bahamas" },
