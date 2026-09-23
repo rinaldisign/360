@@ -59,6 +59,7 @@ var I18N = {
     loc_sf: "San Francisco",
     loc_bahamas: "Bahama",
     loc_austria: "Austria",
+    loc_tokyo: "Tokyo",
     loc_indonesia: "Indonesia"
   },
 
@@ -118,6 +119,7 @@ var I18N = {
     loc_sf: "San Francisco",
     loc_bahamas: "Bahamas",
     loc_austria: "Austria",
+    loc_tokyo: "Tokyo",
     loc_indonesia: "Indonesia"
   },
 
@@ -177,6 +179,7 @@ var I18N = {
     loc_sf: "サンフランシスコ",
     loc_bahamas: "バハマ",
     loc_austria: "オーストリア",
+    loc_tokyo: "東京都",
     loc_indonesia: "インドネシア"
   },
 
@@ -236,6 +239,7 @@ var I18N = {
     loc_sf: "旧金山",
     loc_bahamas: "巴哈马",
     loc_austria: "奥地利",
+    loc_tokyo: "东京",
     loc_indonesia: "印度尼西亚"
   }
 };
