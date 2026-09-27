@@ -629,6 +629,31 @@ h1,h2,h3{
 }
 .info-steps li b{display:block; color:var(--text); font-weight:600; margin-bottom:2px;}
 
+.process-tabs{
+  display:flex;
+  gap:8px;
+  padding:0 0 16px;
+}
+.process-tab{
+  font:inherit;
+  font-size:13px;
+  font-weight:600;
+  color:var(--text-dim);
+  background:transparent;
+  border:1px solid var(--line);
+  border-radius:100px;
+  padding:7px 16px;
+  cursor:pointer;
+  transition:color .2s ease, background .2s ease, border-color .2s ease;
+}
+.process-tab:hover{color:var(--text);}
+.process-tab.active{
+  color:var(--gold-soft);
+  background:var(--gold-dim);
+  border-color:transparent;
+}
+.process-panel:not(.active){display:none;}
+
 .info-stats{
   border:1px solid var(--line);
   border-radius:var(--radius-md);

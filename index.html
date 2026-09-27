@@ -144,12 +144,26 @@
             <h3 data-i18n="process_title">Proses kerja kami</h3>
             <span class="info-toggle" aria-hidden="true"></span>
           </summary>
-          <ol class="info-steps">
-            <li><b data-i18n="step1_t">Diskusi &amp; kesepakatan</b><span data-i18n="step1_d">Membahas kebutuhan, konsep, dan jadwal pengambilan.</span></li>
-            <li><b data-i18n="step2_t">Pengambilan foto lokasi</b><span data-i18n="step2_d">Tim kami memotret ruang Anda dengan peralatan 360° profesional.</span></li>
-            <li><b data-i18n="step3_t">Review hasil</b><span data-i18n="step3_d">Meninjau hasil foto dan konsep tampilan bersama Anda.</span></li>
-            <li><b data-i18n="step4_t">Produksi web tur</b><span data-i18n="step4_d">Proses stitching, editing, dan pembuatan tampilan interaktif.</span></li>
-            <li><b data-i18n="step5_t">Serah terima</b><span data-i18n="step5_d">Anda menerima link, barcode, dan panduan penggunaan.</span></li>
+
+          <div class="process-tabs" role="tablist">
+            <button type="button" class="process-tab active" data-process-tab="pr" role="tab" aria-selected="true" data-i18n="process_tab_pr">Photo Real</button>
+            <button type="button" class="process-tab" data-process-tab="d3" role="tab" aria-selected="false" data-i18n="process_tab_3d">3D</button>
+          </div>
+
+          <ol class="info-steps process-panel active" data-process-panel="pr">
+            <li><b data-i18n="pr_step1_t">Diskusi &amp; kesepakatan</b><span data-i18n="pr_step1_d">Membahas kebutuhan, konsep, dan jadwal pengambilan.</span></li>
+            <li><b data-i18n="pr_step2_t">Pengambilan foto lokasi</b><span data-i18n="pr_step2_d">Tim kami memotret ruang Anda dengan peralatan 360° profesional.</span></li>
+            <li><b data-i18n="pr_step3_t">Review hasil</b><span data-i18n="pr_step3_d">Meninjau hasil foto dan konsep tampilan bersama Anda.</span></li>
+            <li><b data-i18n="pr_step4_t">Produksi web tur</b><span data-i18n="pr_step4_d">Proses stitching, editing, dan pembuatan tampilan interaktif.</span></li>
+            <li><b data-i18n="pr_step5_t">Serah terima</b><span data-i18n="pr_step5_d">Tim kami akan menuntun anda membuat web hosting sendiri, agar 100% web yang telah dibuat adalah milik anda.</span></li>
+          </ol>
+
+          <ol class="info-steps process-panel" data-process-panel="d3" hidden>
+            <li><b data-i18n="d3_step1_t">Diskusi &amp; kesepakatan</b><span data-i18n="d3_step1_d">Membahas kebutuhan, konsep, dan jadwal pengambilan.</span></li>
+            <li><b data-i18n="d3_step2_t">Pengambilan foto lokasi</b><span data-i18n="d3_step2_d">Kami buatkan modeling dan rendering panorama</span></li>
+            <li><b data-i18n="d3_step3_t">Review hasil</b><span data-i18n="d3_step3_d">Meninjau hasil render panorama dan konsep tampilan bersama Anda.</span></li>
+            <li><b data-i18n="d3_step4_t">Produksi web tur</b><span data-i18n="d3_step4_d">Proses stitching, editing, dan pembuatan tampilan interaktif.</span></li>
+            <li><b data-i18n="d3_step5_t">Serah terima</b><span data-i18n="d3_step5_d">Tim kami akan menuntun anda membuat web hosting sendiri, agar 100% web yang telah dibuat adalah milik anda.</span></li>
           </ol>
         </details>
 
@@ -159,10 +173,7 @@
             <span class="info-toggle" aria-hidden="true"></span>
           </summary>
           <ul class="info-points">
-            <li data-i18n="term1">Penyimpanan data dapat menggunakan server kami (tanpa batas waktu) atau server Anda sendiri.</li>
-            <li data-i18n="term2">Revisi setelah hasil diserahkan berlaku maksimal satu sesi.</li>
-            <li data-i18n="term3">Kendala pada server kami diperbaiki tanpa biaya tambahan.</li>
-            <li data-i18n="term4">Penambahan konten baru dihitung sebagai proyek terpisah, bukan revisi.</li>
+            <li data-i18n="term1">Setelah proses pengerjaan selesai, kami akan melakukan proses serah terima, dan kami akan menuntun klien agar membuat akun hosting milik sendiri. Klien cukup melakukan invite di akun hostingnya, jadi email dan password 100% dipegang klien, dan akun hostingnya 100% milik klien.</li>
           </ul>
         </details>
       </div>

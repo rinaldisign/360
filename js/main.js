@@ -403,6 +403,27 @@
     });
   });
 
+  /* ---------- Process tabs (Photo Real / 3D) ---------- */
+  document.querySelectorAll("[data-process-tab]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var target = btn.getAttribute("data-process-tab");
+      var card = btn.closest(".info-card");
+      if (!card) return;
+
+      card.querySelectorAll("[data-process-tab]").forEach(function (b) {
+        var active = b === btn;
+        b.classList.toggle("active", active);
+        b.setAttribute("aria-selected", active ? "true" : "false");
+      });
+
+      card.querySelectorAll("[data-process-panel]").forEach(function (panel) {
+        var active = panel.getAttribute("data-process-panel") === target;
+        panel.classList.toggle("active", active);
+        panel.hidden = !active;
+      });
+    });
+  });
+
   /* ---------- Header scroll state ---------- */
   var header = document.getElementById("siteHeader");
   window.addEventListener("scroll", function () {
